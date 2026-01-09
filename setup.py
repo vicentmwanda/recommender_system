@@ -7,11 +7,9 @@ setup(
     install_requires=[
         "numpy",
         "pandas",
-        "python-dotenv",
-        "matplotlib",
+        "requests",
         "Pillow",
-        "numba",
-        "requests"
+        "matplotlib",
+        "numba"
     ],
-    python_requires='>=3.8',
 )
