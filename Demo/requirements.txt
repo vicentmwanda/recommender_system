@@ -1,0 +1,9 @@
+streamlit
+python-dotenv
+Pillow
+numpy
+pandas
+requests
+matplotlib
+numba
+git+https://github.com/vicentmwanda/recommender_system.git
