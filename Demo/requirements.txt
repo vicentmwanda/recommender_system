@@ -1,9 +1,8 @@
 streamlit
-python-dotenv
-Pillow
 numpy
 pandas
 requests
+Pillow
 matplotlib
 numba
-git+https://github.com/vicentmwanda/recommender_system.git
+python-dotenv
