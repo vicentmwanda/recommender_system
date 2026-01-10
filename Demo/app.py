@@ -1,7 +1,8 @@
 import streamlit as st
 from my_recommender_package.model import RecommenderModel
 from my_recommender_package.data_structure import MyDataStruct
-
+import requests
+import pickle
 # Load environment and API keys
 
 #from dotenv import load_dotenv
@@ -25,10 +26,20 @@ st.title(f"🎬 Movie Recommendation System Demo \n Created By: https://github.c
 
 
 # Load model and data
+def load_model_from_url(url, data_struct=None, load_temp=False):
+    r = requests.get(url)
+    model = pickle.load(io.BytesIO(r.content))
+    model.data_struct = data_struct
+    if getattr(model, "load_temp_data", False) and data_struct and load_temp:
+        data_struct.idx_to_movie_id = model.tmp_idx_to_movie_id
+        data_struct.movie_data = model.tmp_movie_data
+    return model
+
+
+MODEL_URL = "https://raw.githubusercontent.com/vicentmwanda/recommender_system/refs/heads/main/Demo/model.pkl"
+
 database = MyDataStruct(path="", OMDB_api_key=OMDB_API_KEY, TMDB_api_key=TMDB_API_KEY)
-model = RecommenderModel(database).load_from_pickle_file(
-    "model.pkl", database, True
-)
+model = load_model_from_url(MODEL_URL, database, load_temp=True)
 
 
 # Poster caching with grey rectangle fallback
