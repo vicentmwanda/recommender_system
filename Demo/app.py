@@ -1,17 +1,18 @@
 import streamlit as st
 from my_recommender_package.model import RecommenderModel
 from my_recommender_package.data_structure import MyDataStruct
-from dotenv import load_dotenv
-import os
 
 # --------------------------------------------------
 # Load environment and API keys
 # --------------------------------------------------
-sys_path = os.getcwd()
-load_dotenv(os.path.join(sys_path, ".env"))
-OMDB_API_KEY = os.getenv("OMDB") 
-TMDB_API_KEY = os.getenv("TMDB") 
-
+#from dotenv import load_dotenv
+#import os
+#sys_path = os.getcwd()
+#load_dotenv(os.path.join(sys_path, ".env"))
+#OMDB_API_KEY = st.getenv("OMDB") 
+#TMDB_API_KEY = os.getenv("TMDB") 
+OMDB_API_KEY = st.secrets("OMDB") 
+TMDB_API_KEY = st.secrets("TMDB") 
 # --------------------------------------------------
 # Page config
 # --------------------------------------------------
