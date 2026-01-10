@@ -100,9 +100,9 @@ def plot_genres(genres,top, search = '', data_title='',split_strategy='',title="
     # bar chart
     plt.figure(figsize=(8,4.5))
     plt.bar(labels, values)
-    plt.xlabel("Genre" , fontsize=12)
-    plt.ylabel("Count", fontsize=12)
-    plt.title(f"Top {top} Genre counts {search}", fontsize=12)
+    plt.xlabel("Genre" , fontsize=14)
+    plt.ylabel("Count", fontsize=14)
+    plt.title(f"Top {top} Genre counts {search}", fontsize=14)
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.savefig(f'drive/MyDrive/ml_scale/results/{split_strategy}_split/{title}_{split_strategy}_split_{data_title}_dataset.pdf',format='pdf',dpi=300)

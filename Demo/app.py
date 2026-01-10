@@ -155,6 +155,7 @@ if user_ratings:
             unsafe_allow_html=True
             )
             st.caption(rec["genre"])
+            st.caption(f'Rank: {int(rec["scaled_rating"])}/5')
 
 
 # Genre Buttons
