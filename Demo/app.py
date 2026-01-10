@@ -73,10 +73,12 @@ if preference_option == "🎬 Select by Movies":
         for i in range(len(database.idx_to_movie_id))
     ]
     movie_dict = dict(movie_titles)
+    DEFAULT_MOVIES = [1] 
     selected_movies = st.sidebar.multiselect(
         "Movies",
         options=list(movie_dict.keys()),
-        format_func=lambda x: movie_dict[x]
+        format_func=lambda x: movie_dict[x],
+        default=DEFAULT_MOVIES
     )
     for mid in selected_movies:
         rating = st.sidebar.slider(
