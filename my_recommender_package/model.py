@@ -446,8 +446,8 @@ Duration: {time_stamp:.3f} seconds
           n_ratings = len(user_ratings)
           
           #lower overfitting for users with very few ratings
-          effective_tau = tau 
-          effective_gamma = gamma 
+          effective_tau = tau * min(n_ratings / epochs, 1.0)
+          effective_gamma = gamma * min(n_ratings / epochs, 1.0)
 
           for epoch in range(epochs):
 
