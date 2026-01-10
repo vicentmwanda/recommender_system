@@ -37,8 +37,8 @@ def load_model_from_url(url, data_struct=None, load_temp=False):
         data_struct.movie_data = model.tmp_movie_data
     return model
 
-
-MODEL_URL = "https://raw.githubusercontent.com/vicentmwanda/recommender_system/refs/heads/main/Demo/model.pkl"
+MODEL_NAME = "model_20260110_random_split_32M_dataset_withfeatures"
+MODEL_URL = "https://raw.githubusercontent.com/vicentmwanda/recommender_system/refs/heads/main/Demo/{MODEL_NAME}.pkl"
 
 database = MyDataStruct(path="", OMDB_api_key=OMDB_API_KEY, TMDB_api_key=TMDB_API_KEY)
 model = load_model_from_url(MODEL_URL, database, load_temp=True)
