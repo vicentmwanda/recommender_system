@@ -134,6 +134,25 @@ if user_ratings:
         with cols[i % 5]:
             st.image(get_poster(rec["movie_id"]), use_container_width=True)
             st.markdown(f"**{rec['title']}**")
+            st.markdown(
+            f"""
+            <a href="{database.get_movie_url(rec['movie_id'], database=2)}"
+            target="_blank"
+            style="
+                display:inline-block;
+                background-color:#ff7a00;
+                color:white;
+                padding:8px 14px;
+                border-radius:6px;
+                font-weight:600;
+                text-decoration:none;
+                text-align:center;
+            ">
+            View on IMDb
+            </a>
+            """,
+            unsafe_allow_html=True
+            )
             st.caption(rec["genre"])
 
 
