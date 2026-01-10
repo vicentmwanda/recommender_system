@@ -354,14 +354,14 @@ def prepare_data_for_numba(data, M, N, Fn):
     """
 
 
-    #Preparing user data
+    #preparing user data
     user_data = List()
     for m in range(M):
         n_indice = np.array(data.get_ids_vector_by_user(m, True), dtype=np.int64)
         ratings = np.array(data.get_ratings_vector_by_user(m, True), dtype=np.float64)
         user_data.append((n_indice, ratings))
 
-    #Preparing item data (all ratings) for training
+    #preparing item data (all ratings) for training
     item_data = List()
     for n in range(N):
         m_indice = np.array(data.get_ids_vector_by_movie(n, True), dtype=np.int64)
@@ -369,14 +369,14 @@ def prepare_data_for_numba(data, M, N, Fn):
         item_data.append((m_indice, ratings))
 
 
-    #Preparing item data (for test loss only)
+    #preparing item data (for test loss only)
     item_data_test = List()
     for n in range(N):
         m_indice = np.array(data.get_ids_vector_by_movie(n, True, is_train=False), dtype=np.int64)
         ratings = np.array(data.get_ratings_vector_by_movie(n, True, is_train=False), dtype=np.float64)
         item_data_test.append((m_indice, ratings))
 
-    #Preparing feature data (training only)
+    #preparing feature data (training only)
 
     #feature data based on feature
     feature_movie_data = List()
