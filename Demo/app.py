@@ -55,9 +55,7 @@ def get_poster(movie_id):
         return GREY_PLACEHOLDER_URL
     return poster
 
-# --------------------------------------------------
 # Sidebar – User Preferences
-# --------------------------------------------------
 st.sidebar.header("Your Preferences")
 preference_option = st.sidebar.radio(
     "Select how you want to provide preferences:",
@@ -65,7 +63,7 @@ preference_option = st.sidebar.radio(
 )
 user_ratings = []
 
-# ---- Rate movies
+#  Rate movies
 if preference_option == "🎬 Select by Movies":
     st.sidebar.markdown("### Choose movies you like")
     movie_titles = [
@@ -73,7 +71,12 @@ if preference_option == "🎬 Select by Movies":
         for i in range(len(database.idx_to_movie_id))
     ]
     movie_dict = dict(movie_titles)
-    DEFAULT_MOVIES = [1] 
+    DEFAULT_MOVIES = []
+    for movie_id, title in movie_dict.items():
+        if "Finding Nemo" in title:
+            DEFAULT_MOVIES.append(movie_id)
+            break
+
     selected_movies = st.sidebar.multiselect(
         "Movies",
         options=list(movie_dict.keys()),
@@ -89,7 +92,7 @@ if preference_option == "🎬 Select by Movies":
         user_ratings.append((mid, rating))
     
 
-# ---- Select genres
+# Select genres
 if preference_option == "🎭 Select by Genres":
     st.sidebar.markdown("### Choose your favorite genres")
     selected_genres = st.sidebar.multiselect("Genres", model.genre_labels)
