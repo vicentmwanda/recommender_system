@@ -32,6 +32,7 @@ The system is based on **Alternating Least Squares (ALS)** with  the following e
   **3.Feature-Enhanced Model**: Adds genre embeddings to handle cold-start items and improve recommendations for unrated movies.
 
 **Train-Test Splits**: Experiments with three strategies: random, per-user, and per-item.
+
 **Optimization**: Parallelized and vectorized computations using Numba to enable scalable training.
 
 **Cold-start strategies**:
