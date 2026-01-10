@@ -3,6 +3,8 @@ from my_recommender_package.model import RecommenderModel
 from my_recommender_package.data_structure import MyDataStruct
 import requests
 import pickle
+import  io
+
 # Load environment and API keys
 
 #from dotenv import load_dotenv
