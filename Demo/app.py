@@ -2,20 +2,20 @@ import streamlit as st
 from my_recommender_package.model import RecommenderModel
 from my_recommender_package.data_structure import MyDataStruct
 
-# --------------------------------------------------
 # Load environment and API keys
-# --------------------------------------------------
+
 #from dotenv import load_dotenv
 #import os
 #sys_path = os.getcwd()
 #load_dotenv(os.path.join(sys_path, ".env"))
 #OMDB_API_KEY = st.getenv("OMDB") 
 #TMDB_API_KEY = os.getenv("TMDB") 
-OMDB_API_KEY = st.secrets("OMDB") 
-TMDB_API_KEY = st.secrets("TMDB") 
-# --------------------------------------------------
+
+OMDB_API_KEY = st.secrets["OMDB"] 
+TMDB_API_KEY = st.secrets["TMDB"] 
+
+
 # Page config
-# --------------------------------------------------
 st.set_page_config(
     page_title="Movie Recommender Demo",
     layout="wide"
@@ -23,9 +23,8 @@ st.set_page_config(
 
 st.title(f"🎬 Movie Recommendation System Demo \n Created By: https://github.com/vicentmwanda")
 
-# --------------------------------------------------
+
 # Load model and data
-# --------------------------------------------------
 database = MyDataStruct(path="", OMDB_api_key=OMDB_API_KEY, TMDB_api_key=TMDB_API_KEY)
 model = RecommenderModel(database).load_from_pickle_file(
     "model.pkl", database, True
@@ -82,9 +81,7 @@ if preference_option == "🎭 Select by Genres":
     for g in selected_genres:
         user_ratings.append((g, 5.0))
 
-# --------------------------------------------------
 # Personalization Settings
-# --------------------------------------------------
 st.sidebar.header("Personalization Settings")
 personalized_n = st.sidebar.slider("Number of personalized results", 3, 20, 10)
 genre_n = st.sidebar.slider("Number of movies per genre", 3, 20, 5)
@@ -98,9 +95,8 @@ remove_polarized = st.sidebar.checkbox(
     help="Filter out movies with highly mixed opinions"
 )
 
-# --------------------------------------------------
+
 # Personalized Recommendations
-# --------------------------------------------------
 st.subheader("🎯 Recommended Movies")
 if user_ratings:
     st.markdown("### Your Personalized Recommendations")
@@ -121,9 +117,8 @@ if user_ratings:
             st.markdown(f"**{rec['title']}**")
             st.caption(rec["genre"])
 
-# --------------------------------------------------
+
 # Genre Buttons
-# --------------------------------------------------
 st.divider()
 st.markdown("### 🎭 Browse Top Genres")
 top_genres = ["Action", "Comedy", "Sci-Fi", "Drama", "Romance"]
@@ -151,9 +146,8 @@ for i, genre in enumerate(top_genres):
         if cols[i].button(genre):
             st.session_state.active_genre = genre
 
-# --------------------------------------------------
+
 # Genre-based Recommendations
-# --------------------------------------------------
 active_genre = st.session_state.active_genre
 st.markdown(f"### Top {genre_n} {active_genre} Movies")
 genre_recs = model.predict(
