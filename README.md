@@ -25,10 +25,14 @@ Link to the dataset: [https://files.grouplens.org/datasets/movielens/ml-32m.zip]
 
 The system is based on **Alternating Least Squares (ALS)** with  the following experiments:
 
-1. **Bias-only model**: Captures global user and item biases.  
-2. **Bias + Latent Factors**: Incorporates user and item embeddings (trait vectors) to model interactions.  
-3. **Model with Feature Vectors**: Includes genre embeddings to handle cold-start items and improve recommendations for unrated movies.  
-4. **Parallelization & Optimization**: Implemented using **Numba** and vectorized computations for scalability.
+  **1.Bias-Only Model**: Captures global user and item biases.
+  
+  **2.Bias + Latent Factors**: Incorporates user and item embeddings (trait vectors) to model interactions.
+  
+  **3.Feature-Enhanced Model**: Adds genre embeddings to handle cold-start items and improve recommendations for unrated movies.
+
+**Train-Test Splits**: Experiments with three strategies: random, per-user, and per-item.
+**Optimization**: Parallelized and vectorized computations using Numba to enable scalable training.
 
 **Cold-start strategies**:
 - **User selects any movies they like in database**
