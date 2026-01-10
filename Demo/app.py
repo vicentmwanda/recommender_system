@@ -103,10 +103,11 @@ if preference_option == "🎭 Select by Genres":
 st.sidebar.header("Personalization Settings")
 personalized_n = st.sidebar.slider("Number of personalized results", 3, 20, 10)
 genre_n = st.sidebar.slider("Number of movies per genre", 3, 20, 5)
-epochs = st.sidebar.slider("User adaptation epochs", 10, 100, 50, 10)
+epochs = st.sidebar.slider("User adaptation epochs", 10, 100, 50, 10, help ='Control number of epochs used in creating user trait and bias.')
 use_updated_genre = st.sidebar.checkbox("Use trained genre embeddings", False)
 item_factor = st.sidebar.slider("Item bias weight", 0.0, 1.0, 0.05, 0.05)
-user_factor = st.sidebar.slider("User bias weight", 0.0, 1.0, 0.0, 0.05)
+user_factor = st.sidebar.slider("User bias weight", 0.0, 1.0, 0.0, 0.05,
+                                help="Has no effect because user bias is set to zero already!")
 remove_polarized = st.sidebar.checkbox(
     "Remove polarized items",
     True,
@@ -117,7 +118,7 @@ remove_polarized = st.sidebar.checkbox(
 # Personalized Recommendations
 st.subheader("🎯 Recommended Movies")
 if user_ratings:
-    st.markdown("### Your Personalized Recommendations")
+    st.markdown("### Recommended for You")
     personalized = model.predict(
         user_ratings=user_ratings,
         number=personalized_n,
