@@ -1,11 +1,9 @@
-#  Movie Recommender System
+#  Machine Learning At Scale: Design,Implementation and Evaluation of A Movie Recommender System
 
 This project is a **scalable movie recommender system** developed as part of the **Machine Learning at Scale** course at **AIMS South Africa**. 
 The system predicts user preferences for movies using **matrix factorization** and handles large-scale datasets efficiently.  
 
 GitHub repository: [https://github.com/vicentmwanda/recommender_system]
-
----
 
 ##  Project Overview
 
@@ -25,40 +23,18 @@ Link to the dataset: [https://files.grouplens.org/datasets/movielens/ml-32m.zip]
 
 ## Methodology
 
-The system is based on **Alternating Least Squares (ALS)** with:
+The system is based on **Alternating Least Squares (ALS)** with  the following experiments:
 
 1. **Bias-only model**: Captures global user and item biases.  
 2. **Bias + Latent Factors**: Incorporates user and item embeddings (trait vectors) to model interactions.  
-3. **Feature-aware ALS**: Includes genre embeddings to handle cold-start items and improve recommendations for unrated movies.  
+3. **Model with Feature Vectors**: Includes genre embeddings to handle cold-start items and improve recommendations for unrated movies.  
 4. **Parallelization & Optimization**: Implemented using **Numba** and vectorized computations for scalability.
 
 **Cold-start strategies**:
+- **User selects any movies they like in database**
 - **Mean pooling of genre embeddings**  
 - **Feature-based ALS embedding of genres**
 
----
-
-##  Features
-
-- Personalized movie recommendations
-- Recommendations based on user ratings or preferred genres
-- Genre exploration and top movies per genre
-- Poster display with fallback placeholders
-- Streamlit interface for interactive web usage
-- Adjustable number of recommendations and personalization settings
-
----
-
-##  Repository Structure
-recommender_system/
-├── Demo/
-│ ├── app.py # Streamlit frontend
-│ ├── model.pkl # Pre-trained model
-├── my_recommender_package/
-│ ├── init.py
-│ ├── model.py # Model classes
-│ ├── data_structure.py # Sparse data structures
-│ └── ALS_operations.py # ALS training functions
-├── requirements.txt
-└── README.md
-
+##  Project Demo
+You can access a demo of the recommender system using the following link:
+[https://recommender-demo.streamlit.app/]
