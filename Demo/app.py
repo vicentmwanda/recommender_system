@@ -83,7 +83,7 @@ if preference_option == "🎬 Select by Movies":
         format_func=lambda x: movie_dict[x],
         default=DEFAULT_MOVIES
     )
-    st.markdown('Current Preference:')
+    st.sidebar.markdown("#### Current Preference:")
     for mid in selected_movies:
         rating = st.sidebar.slider(
             movie_dict[mid],
